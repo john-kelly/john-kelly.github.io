@@ -5035,9 +5035,9 @@ var author$project$Main$main = elm_lang$browser$Browser$fullscreen(
 						{
 							aa: elm_lang$core$Maybe$Just('elm'),
 							ac: elm_lang$core$Maybe$Just(
-								{_: true, am: true}),
+								{_: false, am: true}),
 							aj: false,
-							ak: false
+							ak: true
 						},
 						_List_Nil,
 						author$project$Main$blog0)

@@ -14,10 +14,10 @@ main =
                 { title = "foldp"
                 , body =
                     [ Markdown.toHtmlWith
-                        { githubFlavored = Just { tables = True, breaks = True }
+                        { githubFlavored = Just { tables = True, breaks = False }
                         , defaultHighlighting = Just "elm"
                         , sanitize = False
-                        , smartypants = False
+                        , smartypants = True
                         }
                         []
                         blog0

@@ -1,8 +1,19 @@
 module Main exposing (main)
 
-import Browser exposing (staticPage)
+import Browser
 import Html
 
 
+main : Program () () ()
 main =
-    staticPage (Html.text "hello world")
+    Browser.fullscreen
+        { init = \env -> ( (), Cmd.none )
+        , view =
+            \model ->
+                { title = "foldp"
+                , body = [ Html.text "hi" ]
+                }
+        , update = \msg model -> ( model, Cmd.none )
+        , onNavigation = Nothing
+        , subscriptions = \model -> Sub.none
+        }

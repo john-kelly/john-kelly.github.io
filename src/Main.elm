@@ -89,9 +89,7 @@ With the following design goals:
 - **Resources vs JSON** - We want to speak in terms of the abstract representation of our data model rather than its specific interchange format and/or storage format.
 - **Typed vs Untyped** - We want to compose our requests using the values of our application rather than the concatenation of query strings.
 
-
 Let's take a second look at these design goals but this time in the form of a diagram:
-
 <table>
    <tr>
       <th>Request Builder</th>

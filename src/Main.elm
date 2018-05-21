@@ -31,12 +31,7 @@ main =
 
 blog0 =
     """
----
-title: "A Remote Data Request API in Elm"
-published: true
-description: An overview of a remote data request API in Elm
-tags: elm, api, postgrest, webdev
----
+# A Remote Data Request API in Elm
 
 *This post is about the core abstractions found in the elm-postgrest package and how those abstractions may be relevant to similar packages.*
 
@@ -422,6 +417,4 @@ Thanks for reading.
 *If you'd like to see a more "RealWorld" example application, here's a link to [john-kelly/elm-postgrest-spa-example](https://github.com/john-kelly/elm-postgrest-spa-example).*
 
 *If you're interested in taking a look at the development of `john-kelly/elm-postgrest`, head over to the [dev branch](https://github.com/john-kelly/elm-postgrest/tree/dev).*
-
-# Laura, have a good time at the party!
 """

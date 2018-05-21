@@ -80,11 +80,11 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
 
 
 
-var _List_Nil = { $: 0 };
-var _List_Nil_UNUSED = { $: '[]' };
+var _List_Nil_UNUSED = { $: 0 };
+var _List_Nil = { $: '[]' };
 
-function _List_Cons(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons_UNUSED(hd, tl) { return { $: '::', a: hd, b: tl }; }
+function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
 
 
 var _List_cons = F2(_List_Cons);
@@ -194,7 +194,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 		return false;
 	}
 
-	/**_UNUSED/
+	/**/
 	if (x.$ === 'Set_elm_builtin')
 	{
 		x = elm_lang$core$Set$toList(x);
@@ -207,7 +207,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 	}
 	//*/
 
-	/**/
+	/**_UNUSED/
 	if (x.$ < 0)
 	{
 		x = elm_lang$core$Dict$toList(x);
@@ -242,7 +242,7 @@ function _Utils_cmp(x, y, ord)
 		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
 	}
 
-	/**_UNUSED/
+	/**/
 	if (x instanceof String)
 	{
 		var a = x.valueOf();
@@ -251,10 +251,10 @@ function _Utils_cmp(x, y, ord)
 	}
 	//*/
 
-	/**/
+	/**_UNUSED/
 	if (!x.$)
 	//*/
-	/**_UNUSED/
+	/**/
 	if (x.$[0] === '#')
 	//*/
 	{
@@ -284,17 +284,17 @@ var _Utils_compare = F2(function(x, y)
 
 // COMMON VALUES
 
-var _Utils_Tuple0 = 0;
-var _Utils_Tuple0_UNUSED = { $: '#0' };
+var _Utils_Tuple0_UNUSED = 0;
+var _Utils_Tuple0 = { $: '#0' };
 
-function _Utils_Tuple2(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2_UNUSED(a, b) { return { $: '#2', a: a, b: b }; }
+function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
 
-function _Utils_Tuple3(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3_UNUSED(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
 
-function _Utils_chr(c) { return c; }
-function _Utils_chr_UNUSED(c) { return new String(c); }
+function _Utils_chr_UNUSED(c) { return c; }
+function _Utils_chr(c) { return new String(c); }
 
 
 // RECORDS
@@ -499,12 +499,12 @@ var _JsArray_appendN = F3(function(n, dest, source)
 
 // LOG
 
-var _Debug_log = F2(function(tag, value)
+var _Debug_log_UNUSED = F2(function(tag, value)
 {
 	return value;
 });
 
-var _Debug_log_UNUSED = F2(function(tag, value)
+var _Debug_log = F2(function(tag, value)
 {
 	console.log(tag + ': ' + _Debug_toString(value));
 	return value;
@@ -530,12 +530,12 @@ function _Debug_todoCase(moduleName, region, value)
 
 // TO STRING
 
-function _Debug_toString(value)
+function _Debug_toString_UNUSED(value)
 {
 	return '<internals>';
 }
 
-function _Debug_toString_UNUSED(value)
+function _Debug_toString(value)
 {
 	return _Debug_toAnsiString(false, value);
 }
@@ -703,13 +703,13 @@ function _Debug_internalColor(ansi, string)
 
 
 
-function _Error_throw(identifier)
+function _Error_throw_UNUSED(identifier)
 {
 	throw new Error('https://github.com/elm-lang/core/blob/master/hints/' + identifier + '.md');
 }
 
 
-function _Error_throw_UNUSED(identifier, fact1, fact2, fact3, fact4)
+function _Error_throw(identifier, fact1, fact2, fact3, fact4)
 {
 	switch(identifier)
 	{
@@ -768,11 +768,11 @@ function _Error_throw_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Error_regionToString(region)
 {
-	if (region.G.x === region.J.x)
+	if (region.start.line === region.end.line)
 	{
-		return 'on line ' + region.G.x;
+		return 'on line ' + region.start.line;
 	}
-	return 'on lines ' + region.G.x + ' through ' + region.J.x;
+	return 'on lines ' + region.start.line + ' through ' + region.end.line;
 }
 
 function _Error_dictBug()
@@ -1234,11 +1234,11 @@ var _Json_encode = F2(function(indentLevel, value)
 	return JSON.stringify(_Json_unwrap(value), null, indentLevel);
 });
 
-function _Json_wrap_UNUSED(value) { return { $: 0, a: value }; }
-function _Json_unwrap_UNUSED(value) { return value.a; }
+function _Json_wrap(value) { return { $: 0, a: value }; }
+function _Json_unwrap(value) { return value.a; }
 
-function _Json_wrap(value) { return value; }
-function _Json_unwrap(value) { return value; }
+function _Json_wrap_UNUSED(value) { return value; }
+function _Json_unwrap_UNUSED(value) { return value; }
 
 function _Json_emptyArray() { return []; }
 function _Json_emptyObject() { return {}; }
@@ -1464,9 +1464,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, object)
 		return _Platform_initialize(
 			flagDecoder,
 			flags,
-			impl.ae,
-			impl.ao,
-			impl.al,
+			impl.init,
+			impl.update,
+			impl.subscriptions,
 			function() { return function() {} }
 		);
 	};
@@ -1880,7 +1880,7 @@ function _Platform_setupIncomingPort(name, sendToApp)
 //
 
 
-function _Platform_export(exports)
+function _Platform_export_UNUSED(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsProd(scope['Elm'], exports)
@@ -1901,7 +1901,7 @@ function _Platform_mergeExportsProd(obj, exports)
 }
 
 
-function _Platform_export_UNUSED(exports)
+function _Platform_export(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsDebug('Elm', scope['Elm'], exports)
@@ -2191,24 +2191,24 @@ function _VirtualDom_noInnerHtmlOrFormAction(key)
 	return key == 'innerHTML' || key == 'formAction' ? 'data-' + key : key;
 }
 
-function _VirtualDom_noJavaScriptUri(value)
+function _VirtualDom_noJavaScriptUri_UNUSED(value)
 {
 	return /^\s*javascript:/i.test(value) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptUri_UNUSED(value)
+function _VirtualDom_noJavaScriptUri(value)
 {
 	return /^\s*javascript:/i.test(value)
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
 		: value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri(value)
+function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
+function _VirtualDom_noJavaScriptOrHtmlUri(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value)
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
@@ -2271,9 +2271,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		k: _VirtualDom_mapTimed(func, record.k),
-		V: record.V,
-		R: record.R
+		message: _VirtualDom_mapTimed(func, record.message),
+		stopPropagation: record.stopPropagation,
+		preventDefault: record.preventDefault
 	}
 });
 
@@ -2574,10 +2574,10 @@ function _VirtualDom_eventToTimedMsg(event, tag, value)
 		return value;
 	}
 
-	if (tag === 1 ? value.b : tag === 3 && value.V) event.stopPropagation();
-	if (tag === 2 ? value.b : tag === 3 && value.R) event.preventDefault();
+	if (tag === 1 ? value.b : tag === 3 && value.stopPropagation) event.stopPropagation();
+	if (tag === 2 ? value.b : tag === 3 && value.preventDefault) event.preventDefault();
 
-	return tag < 3 ? value.a : value.k;
+	return tag < 3 ? value.a : value.message;
 }
 
 
@@ -3540,9 +3540,9 @@ function _Markdown_formatOptions(options)
 {
 	function toHighlight(code, lang)
 	{
-		if (!lang && elm_lang$core$Maybe$isJust(options.aa))
+		if (!lang && elm_lang$core$Maybe$isJust(options.defaultHighlighting))
 		{
-			lang = options.aa.a;
+			lang = options.defaultHighlighting.a;
 		}
 
 		if (typeof hljs !== 'undefined' && lang && hljs.listLanguages().indexOf(lang) >= 0)
@@ -3553,15 +3553,15 @@ function _Markdown_formatOptions(options)
 		return code;
 	}
 
-	var gfm = options.ac.a;
+	var gfm = options.githubFlavored.a;
 
 	return {
 		highlight: toHighlight,
 		gfm: gfm,
-		tables: gfm && gfm.am,
-		breaks: gfm && gfm._,
-		sanitize: options.aj,
-		smartypants: options.ak
+		tables: gfm && gfm.tables,
+		breaks: gfm && gfm.breaks,
+		sanitize: options.sanitize,
+		smartypants: options.smartypants
 	};
 }
 
@@ -3689,10 +3689,10 @@ var _Browser_embed = _Debugger_embed || F4(function(impl, flagDecoder, debugMeta
 		return _Platform_initialize(
 			flagDecoder,
 			flags,
-			impl.ae,
-			impl.ao,
-			impl.al,
-			_Browser_makeStepperBuilder(node, impl.ap)
+			impl.init,
+			impl.update,
+			impl.subscriptions,
+			_Browser_makeStepperBuilder(node, impl.view)
 		);
 	};
 	return object;
@@ -3707,16 +3707,16 @@ var _Browser_fullscreen = _Debugger_fullscreen || F4(function(impl, flagDecoder,
 		return _Platform_initialize(
 			A2(elm_lang$json$Json$Decode$map, _Browser_toEnv, flagDecoder),
 			flags,
-			impl.ae,
-			impl.ao,
-			impl.al,
+			impl.init,
+			impl.update,
+			impl.subscriptions,
 			_Browser_makeStepperBuilder(_VirtualDom_doc.body, function(model) {
-				var ui = impl.ap(model);
-				if (_VirtualDom_doc.title !== ui.an)
+				var ui = impl.view(model);
+				if (_VirtualDom_doc.title !== ui.title)
 				{
-					_VirtualDom_doc.title = ui.an;
+					_VirtualDom_doc.title = ui.title;
 				}
-				return _VirtualDom_node('body')(_List_Nil)(ui.Z);
+				return _VirtualDom_node('body')(_List_Nil)(ui.body);
 			})
 		);
 	};
@@ -3727,8 +3727,8 @@ var _Browser_fullscreen = _Debugger_fullscreen || F4(function(impl, flagDecoder,
 function _Browser_toEnv(flags)
 {
 	return {
-		X: _Browser_getUrl(),
-		L: flags
+		url: _Browser_getUrl(),
+		flags: flags
 	};
 }
 
@@ -4207,11 +4207,11 @@ function _String_fromList(chars)
 	return _List_toArray(chars).join('');
 }
 
-var author$project$Main$blog0 = '\n---\ntitle: "A Remote Data Request API in Elm"\npublished: true\ndescription: An overview of a remote data request API in Elm\ntags: elm, api, postgrest, webdev\n---\n\n*This post is about the core abstractions found in the elm-postgrest package and how those abstractions may be relevant to similar packages.*\n\n---\n\nIn Elm, the design space of **remote data request APIs** has seen its fair share of work.\n\nWe have APIs like `lukewestby/elm-http-builder` which provide a thin convenience layer over `elm-lang/http`.\n```elm\naddItem : String -> Cmd Msg\naddItem item =\n    HttpBuilder.post "http://example.com/api/items"\n        |> withQueryParams [ ("hello", "world") ]\n        |> withHeader "X-My-Header" "Some Header Value"\n        |> withJsonBody (itemEncoder item)\n        |> withTimeout (10 * Time.second)\n        |> withExpect (Http.expectJson itemsDecoder)\n        |> withCredentials\n        |> send handleRequestComplete\n```\n\nWe have APIs like `krisajenkins/remotedata` which model the various states remote data can take.\n```elm\ntype RemoteData e a\n    = NotAsked\n    | Loading\n    | Failure e\n    | Success a\n```\n\nAnd, we have APIs like `jamesmacaulay/elm-graphql`, `jahewson/elm-graphql`, `dillonkearns/graphqelm`, `mgold/elm-data`, `noahzgordon/elm-jsonapi`, and others which abstract over `elm-lang/http` to provide an API which is nice in the domain language of their respective specification. We\'ll refer to this group of APIs as *backend specific request builders*.\n\nIn addition to community efforts, Evan himself wrote up [a vision for data interchange in Elm](https://gist.github.com/evancz/1c5f2cf34939336ecb79b97bb89d9da6). And although the API for this specific vision likely sits on the same level of abstraction as `elm-lang/http`, `Json.Decode`, and `Json.Encode` rather than backend specific request builders, it legitimized the exploration around "how do you send information between clients and servers?"\n\n# Design Space\nWhat is in the design space of remote data request APIs? More specifically, what is in the design space of backend specific request builders?\n\nFor the sake of this post, we\'ll define the design space as:\n\n---------\n\nA means to **describe the capabilities of a data model** and subsequently **build requests against that data model** for client-server applications.\n\n---------\n\nWith the following design goals:\n\n- **Domain Language vs HTTP** - We want to interact with our backends in their own terms rather than their raw transfer protocol. For example, in the context of GraphQL, this means queries, mutations, selection sets, fragments, etc.\n- **Selections vs Decoders** - We want to speak in terms of what we wish to select rather than how we wish to decode it.\n- **Resources vs JSON** - We want to speak in terms of the abstract representation of our data model rather than its specific interchange format and/or storage format.\n- **Typed vs Untyped** - We want to compose our requests using the values of our application rather than the concatenation of query strings.\n\nLet\'s take a second look at these design goals but this time in the form of a diagram:\n<table>\n   <tr>\n      <th>Request Builder</th>\n      <th>Schema Description</th>\n   </tr>\n   <tr>\n      <td>CRUD requests <br> selections <br> conditions <br> order <br> limit and offset <br> pagination</td>\n      <td>resource schema<br>attributes<br>relationships<br>cardinality</td>\n   </tr>\n   <tr>\n      <td colspan=2>\n         <center><i>Abstraction Barrier</i></center>\n      </td>\n   </tr>\n   <tr>\n      <th>Transfer Protocol</th>\n      <th>Interchange Format</th>\n   </tr>\n   <tr>\n      <td>HTTP:<br>headers<br>body<br>methods<br>url: query and fragment<br>status codes</td>\n      <td>json<br>edn<br>xml<br>transit<br>protobuf</td>\n   </tr>\n</table>\n\nThe dividing horizontal line in the diagram represents an *abstraction barrier*. The barrier, in this case, separates backend specific request builders (above) from their implementation (below). Users at one layer should not need to concern themselves with the details below. The remainder of this post will examine an Elm API at the abstraction level of backend specific request builder.\n\n# elm-postgrest\nI\'m the author of `john-kelly/elm-postgrest`; a package that abstracts over `elm-lang/http`, `Json.Decode`, and `Json.Encode` to provide a nice API in the context of PostgREST. Like previously stated, this package falls into the category of backend specific request builders.\n\nThis post is about the core abstractions found in the elm-postgrest package and how those abstractions may be relevant to similar packages. All examples will be based on the work from `john-kelly/elm-postgrest-spa-example`, which is an almost complete port of `rtfeldman/elm-spa-example` to PostgREST. For those unfamiliar with PostgREST, here\'s an excerpt from their official documentation:\n\n> PostgREST is a standalone web server that turns your PostgreSQL database directly into a RESTful API. The structural constraints and permissions in the database determine the API endpoints and operations ... The PostgREST philosophy establishes a single declarative source of truth: the data itself.\n\nThe mental model for how these 3 pieces fit together:\n\n-------\n\n#### elm-postgrest (client) ⇄ PostgREST (server) ⇄ PostgreSQL (db)\n\n-------\n\n*In case you\'re wondering, no knowledge of PostgREST is necessary to make it through this post, however, intermediate knowledge of Elm and technologies like REST, GraphQL, JSON API, Firebase, Parse, or other remote data server specifications will be helpful.*\n\nAlright. Now that we have some context, let\'s dig into the code.\n\n# Our First Request\nOur first request will retrieve all articles from our remote data server.\n\nFor this example, we\'ll assume that we have a collection of article resources at `example.com/api/articles`. Each article has a title, a body, and the count of the number of favorites.\n\n*I take a top down approach for the code in this example. Keep this in mind! Later sections will help you better understand earlier sections.*\n\n## Types\nWe\'re going to start out by looking at 4 of the core types in elm-postgrest. I provide the internal implementation of each type, however, don\'t get bogged down in the definition. I show the implementation in an attempt to ground the new PostgRest types to something you\'re familiar with.\n\n```elm\nimport PostgRest as PG\n    exposing\n        ( Request\n        , Selection\n        , Schema\n        , Attribute\n        )\n```\n- **Request** - A fully constructed request. The only thing left to do is convert this value into an `Http.Request` and send it off to the Elm runtime. As we\'ll learn, a `Request` can be constructed with a `Selection` and a `Schema`.\n```elm\ntype Request a\n    = Read\n        { parameters : Parameters\n        , decoder : Decode.Decoder a\n        }\n```\n- **Selection** - The `Selection` is one of the primary means to build requests against the data model. Specifically, the `Selection` represents which fields to select and which related resources to embed.\n```elm\ntype Selection attributes a\n    = Selection\n        (attributes\n         ->\n            { attributeNames : List String\n            , embeds : List Parameters\n            , decoder : Decode.Decoder a\n            }\n        )\n```\n- **Schema** - The `Schema` is the means to describe the capabilities of a data model. *Capabilities* means what we can select, what we can filter by, and what we can order by. We\'re only going to cover selection in this post.\n```elm\ntype Schema id attributes\n    = Schema String attributes\n```\n- **Attribute** - An individual select-able unit of a `Schema`. For example, the article resource has a title `Attribute String`.\n```elm\ntype Attribute a\n    = Attribute\n        { name : String\n        , decoder : Decode.Decoder a\n        , encoder : a -> Encode.Value\n        , urlEncoder : a -> String\n        }\n```\n\n## Request\nHere we\'re constructing a `Request` which will result in a `List String`. The mental model for this type should be the same as that of an `Http.Request`: "If we were to send this `Request`, we can expect back a `List String`."\n\n\n```elm\ngetArticles : Request (List String)\ngetArticles =\n    PG.readAll articleSchema articleSelection\n```\nLet\'s take a look at the function signature of `PG.readAll` before moving on to the next section.\n\n```elm\nreadAll : Schema id attributes -> Selection attributes a -> Request (List a)\n```\n\nAs we can see by the signature of `readAll`, a `Request` can be constructed with a `Selection` and a `Schema`. Let\'s now take a look at our `Selection`.\n\n## Selection\n\nThe `Selection` type has 2 type parameters: `attributes` and `a`. The mental model for reading this type is "If given a `Schema` of `attributes`, a value of type `a` could be selected."\n\n```elm\narticleSelection :\n    Selection\n        { attributes\n            | title : Attribute String\n        }\n        String\narticleSelection =\n    PG.field .title\n```\n\nThings will look vaguely familiar if you\'ve worked with `Json.Decode.field`. This is intentional. Overall, you\'ll find that the `Selection` API is quite similar to the `Decoder` API. Let\'s examine the signature of `PG.field`:\n\n```elm\nPG.field : (attributes -> Attribute a) -> Selection attributes a\n```\n\nA field `Selection` is composed of a dot accessor for an `Attribute`. If we remember back to the mental model for a `Selection`, we\'ll recall that we\'re in need of a `Schema` to fulfill the `Selection`. Given that the first type parameter of our `articleSelection` is `{ attributes | title : Attribute String }`, our `Schema` will likely itself have this record of `Attribute`s. Let\'s take a look!\n\n## Schema\n\nIn theory, we could pass anything as the second parameter to the `PG.schema` function, but in practice this value will always be an Elm record of `Attribute`s.\n\n```elm\narticleSchema :\n    Schema x\n        { title : Attribute String\n        , body : Attribute String\n        , favoritesCount : Attribute Int\n        }\narticleSchema =\n    PG.schema "articles"\n        { title = PG.string "title"\n        , body = PG.string "body"\n        , favoritesCount = PG.int "favorites_count"\n        }\n```\n\n`PG.schema` takes a `String` which corresponds to the path to our resource (ex: example.com/api/*articles*) and a record of `Attribute`s. This record of `Attribute`s describes the capabilities of a data model. In our specific case, it describes what we are able to select!\n\nLet\'s take a look at how `Schema` and `PG.schema` are defined internally:\n\n```elm\ntype Schema id attributes\n    = Schema String attributes\n\nschema : String -> attributes -> Schema id attributes\nschema name attrs =\n    Schema name attrs\n```\n\nAt first glance, we\'ll see that a `Schema` is nothing more than a wrapper around a record of `Attribute`s. And this is true, but it\'s important to highlight that it\'s an **opaque** wrapper around a record of `Attribute`s. It may not be immediately obvious, but it is this API that guides users towards a separation of the description of capabilities (`Schema`) from the building of requests (`Selection`). A user can\'t just write something like `PG.field mySchema.title` because the record is wrapped, and a user can\'t just unwrap the `Schema` because it\'s opaque! They are forced to use the functions provided by the package to compose things (namely `PG.field`). This API guides users towards writing selections in terms of an eventual record of attributes!\n\n*Hopefully the previous explanation sheds a bit of light on why `PG.field` takes a dot accessor for an `Attribute` rather than an `Attribute` directly.*\n\nBefore moving on, let\'s review a few of these type signatures side by side:\n```elm\nPG.readAll : Schema id attributes -> Selection attributes a -> Request (List a)\n\n\narticleSelection :\n    Selection\n        { attributes\n            | title : Attribute String\n        }\n        String\n\n\narticleSchema :\n    Schema x\n        { title : Attribute String\n        , body : Attribute String\n        , favoritesCount : Attribute Int\n        }\n```\n\nJust take a moment to take this all in. It\'s pretty cool how the pieces fit together, and we can thank Elm\'s extensible record system for that!\n\n*Just to wrap things up for those who are curious, there exists a function of type `PG.toHttpRequest : PG.Request -> Http.Request`. From there you can convert to a `Task` with `Http.toTask` or directly to a `Cmd` with `Http.send`.*\n\n# Conclusion\n\n### Did we meet our design goals?\nYes! In our example, we built a request to read all the titles (Request Builder) of our article collection resource (Schema Representation) as opposed to making an HTTP GET request to the `api/articles?select=title` URL (Transfer Protocol) and decoding the JSON response (Interchange Format). The former is how we expressed our request in the example, and the latter is an implementation detail.\n\n### What has this design bought us?\n\n1. **Type Safety**\n2. **Reuse**\n\n#### Type Safety\nIf the `Schema` is valid, our `Request` will be valid. Our `Selection` is defined *in terms of* a `Schema`, and we can only construct a `Request` if the `Schema` and `Selection` agree statically. Put another way, a subset of request building errors become static errors rather than logic errors.\n\nFor example, let\'s say we mistype `.title` when we\'re constructing our `Selection`. If our `Schema` correctly describes our remote resource, we\'ll get a nice compiler message. Let\'s take a look at that error message!\n\n```\nThe definition of `articleSelection` does not match its type annotation.\n\n18| articleSelection :\n19|     Selection\n20|         { attributes\n21|             | title : Attribute String\n22|         }\n23|         String\n24| articleSelection =\n25|>    PG.field .titl\n\nThe type annotation for `articleSelection` says it is a:\n\n    Selection { attributes | title : ... } String\n\nBut the definition (shown above) is a:\n\n    Selection { b | titl : ... } a\n```\n\nPretty cool. However...\n\nClose readers will argue that we\'ve just moved the logic error to the `Schema` from the `Decoder`. This is true, however, the difference is that we only have 1 `Schema` for an entire entity as opposed to a `Decoder` for each way we wish to decode the entity. A `Schema` represents a single source of truth for all `Selection` capabilities of a remote resource. This in turn reduces the surface area of decoding logic errors.\n\nSo, in summary: If the `Schema` is valid, our `Request` will be valid.\n\n\n#### Reuse\n\nA `Selection` can be reused to construct `Request`s with *any* `Schema` that has the proper `Attribute`s! For example, if our remote data server had both article resources and book resources:\n\n```elm\narticleSchema :\n    Schema x\n        { title : Attribute String\n        , body : Attribute String\n        , favoritesCount : Attribute Int\n        }\narticleSchema =\n    PG.schema "articles"\n        { title = PG.string "title"\n        , body = PG.string "body"\n        , favoritesCount = PG.int "favorites_count"\n        }\n\n\nbookSchema :\n    Schema x\n        { title : Attribute String\n        , pages : Attribute Int\n        , authorName : Attribute String\n        }\nbookSchema =\n    PG.schema "books"\n        { title = PG.string "title"\n        , pages = PG.int "pages"\n        , authorName = PG.string "author_name"\n        }\n```\n\nWe could use the same `Selection`:\n\n```elm\ntitleSelection :\n    Selection\n        { attributes\n            | title : Attribute String\n        }\n        String\ntitleSelection =\n    PG.field .title\n```\n\nTo construct our 2 separate requests:\n\n```elm\ngetArticles : Request (List String)\ngetArticles =\n    PG.readAll articleSchema titleSelection\n\ngetBooks : Request (List String)\ngetBooks =\n    PG.readAll bookSchema titleSelection\n```\n\nPretty cool. However...\n\nTo be completely honest, I have not yet had a need for this reuse feature. With that being said, there\'s still something about it that makes the API feel right.\n\nSo, in summary: Extensible records in `Selection` API grant us reuse.\n\n\n### Which ideas could find their way into similar projects?\n- `Schema` as single source of truth for `Selection` capabilities\n- Separation of `Schema` and `Selection`\n- Extensible records central to design of this separation\n- `Selection` API similar to that of `Decoder` API\n- And more.. we\'ll discuss those in the future posts\n\n# Future\nIn the interest of space, time and boredom, I have not included all of the API designs of the `elm-postgrest` package in this post. In the future, I may write posts to highlight the concepts which were left out here. For example:\n- Combining Selections\n- Schema Relationships and Embedding Selections\n- Conditions and Orders\n- Create, Update, and Delete\n\n\nThanks for reading.\n\n\n*If you\'d like to view some more simple examples, here\'s a link to [the examples on github](https://github.com/john-kelly/elm-postgrest-example). Take a look at each individual git commit.*\n\n*If you\'d like to see a more "RealWorld" example application, here\'s a link to [john-kelly/elm-postgrest-spa-example](https://github.com/john-kelly/elm-postgrest-spa-example).*\n\n*If you\'re interested in taking a look at the development of `john-kelly/elm-postgrest`, head over to the [dev branch](https://github.com/john-kelly/elm-postgrest/tree/dev).*\n\n# Laura, have a good time at the party!\n';
-var elm_lang$core$Basics$False = 1;
-var elm_lang$core$Basics$True = 0;
+var author$project$Main$blog0 = '\n# A Remote Data Request API in Elm\n\n*This post is about the core abstractions found in the elm-postgrest package and how those abstractions may be relevant to similar packages.*\n\n---\n\nIn Elm, the design space of **remote data request APIs** has seen its fair share of work.\n\nWe have APIs like `lukewestby/elm-http-builder` which provide a thin convenience layer over `elm-lang/http`.\n```elm\naddItem : String -> Cmd Msg\naddItem item =\n    HttpBuilder.post "http://example.com/api/items"\n        |> withQueryParams [ ("hello", "world") ]\n        |> withHeader "X-My-Header" "Some Header Value"\n        |> withJsonBody (itemEncoder item)\n        |> withTimeout (10 * Time.second)\n        |> withExpect (Http.expectJson itemsDecoder)\n        |> withCredentials\n        |> send handleRequestComplete\n```\n\nWe have APIs like `krisajenkins/remotedata` which model the various states remote data can take.\n```elm\ntype RemoteData e a\n    = NotAsked\n    | Loading\n    | Failure e\n    | Success a\n```\n\nAnd, we have APIs like `jamesmacaulay/elm-graphql`, `jahewson/elm-graphql`, `dillonkearns/graphqelm`, `mgold/elm-data`, `noahzgordon/elm-jsonapi`, and others which abstract over `elm-lang/http` to provide an API which is nice in the domain language of their respective specification. We\'ll refer to this group of APIs as *backend specific request builders*.\n\nIn addition to community efforts, Evan himself wrote up [a vision for data interchange in Elm](https://gist.github.com/evancz/1c5f2cf34939336ecb79b97bb89d9da6). And although the API for this specific vision likely sits on the same level of abstraction as `elm-lang/http`, `Json.Decode`, and `Json.Encode` rather than backend specific request builders, it legitimized the exploration around "how do you send information between clients and servers?"\n\n# Design Space\nWhat is in the design space of remote data request APIs? More specifically, what is in the design space of backend specific request builders?\n\nFor the sake of this post, we\'ll define the design space as:\n\n---------\n\nA means to **describe the capabilities of a data model** and subsequently **build requests against that data model** for client-server applications.\n\n---------\n\nWith the following design goals:\n\n- **Domain Language vs HTTP** - We want to interact with our backends in their own terms rather than their raw transfer protocol. For example, in the context of GraphQL, this means queries, mutations, selection sets, fragments, etc.\n- **Selections vs Decoders** - We want to speak in terms of what we wish to select rather than how we wish to decode it.\n- **Resources vs JSON** - We want to speak in terms of the abstract representation of our data model rather than its specific interchange format and/or storage format.\n- **Typed vs Untyped** - We want to compose our requests using the values of our application rather than the concatenation of query strings.\n\nLet\'s take a second look at these design goals but this time in the form of a diagram:\n<table>\n   <tr>\n      <th>Request Builder</th>\n      <th>Schema Description</th>\n   </tr>\n   <tr>\n      <td>CRUD requests <br> selections <br> conditions <br> order <br> limit and offset <br> pagination</td>\n      <td>resource schema<br>attributes<br>relationships<br>cardinality</td>\n   </tr>\n   <tr>\n      <td colspan=2>\n         <center><i>Abstraction Barrier</i></center>\n      </td>\n   </tr>\n   <tr>\n      <th>Transfer Protocol</th>\n      <th>Interchange Format</th>\n   </tr>\n   <tr>\n      <td>HTTP:<br>headers<br>body<br>methods<br>url: query and fragment<br>status codes</td>\n      <td>json<br>edn<br>xml<br>transit<br>protobuf</td>\n   </tr>\n</table>\n\nThe dividing horizontal line in the diagram represents an *abstraction barrier*. The barrier, in this case, separates backend specific request builders (above) from their implementation (below). Users at one layer should not need to concern themselves with the details below. The remainder of this post will examine an Elm API at the abstraction level of backend specific request builder.\n\n# elm-postgrest\nI\'m the author of `john-kelly/elm-postgrest`; a package that abstracts over `elm-lang/http`, `Json.Decode`, and `Json.Encode` to provide a nice API in the context of PostgREST. Like previously stated, this package falls into the category of backend specific request builders.\n\nThis post is about the core abstractions found in the elm-postgrest package and how those abstractions may be relevant to similar packages. All examples will be based on the work from `john-kelly/elm-postgrest-spa-example`, which is an almost complete port of `rtfeldman/elm-spa-example` to PostgREST. For those unfamiliar with PostgREST, here\'s an excerpt from their official documentation:\n\n> PostgREST is a standalone web server that turns your PostgreSQL database directly into a RESTful API. The structural constraints and permissions in the database determine the API endpoints and operations ... The PostgREST philosophy establishes a single declarative source of truth: the data itself.\n\nThe mental model for how these 3 pieces fit together:\n\n-------\n\n#### elm-postgrest (client) ⇄ PostgREST (server) ⇄ PostgreSQL (db)\n\n-------\n\n*In case you\'re wondering, no knowledge of PostgREST is necessary to make it through this post, however, intermediate knowledge of Elm and technologies like REST, GraphQL, JSON API, Firebase, Parse, or other remote data server specifications will be helpful.*\n\nAlright. Now that we have some context, let\'s dig into the code.\n\n# Our First Request\nOur first request will retrieve all articles from our remote data server.\n\nFor this example, we\'ll assume that we have a collection of article resources at `example.com/api/articles`. Each article has a title, a body, and the count of the number of favorites.\n\n*I take a top down approach for the code in this example. Keep this in mind! Later sections will help you better understand earlier sections.*\n\n## Types\nWe\'re going to start out by looking at 4 of the core types in elm-postgrest. I provide the internal implementation of each type, however, don\'t get bogged down in the definition. I show the implementation in an attempt to ground the new PostgRest types to something you\'re familiar with.\n\n```elm\nimport PostgRest as PG\n    exposing\n        ( Request\n        , Selection\n        , Schema\n        , Attribute\n        )\n```\n- **Request** - A fully constructed request. The only thing left to do is convert this value into an `Http.Request` and send it off to the Elm runtime. As we\'ll learn, a `Request` can be constructed with a `Selection` and a `Schema`.\n```elm\ntype Request a\n    = Read\n        { parameters : Parameters\n        , decoder : Decode.Decoder a\n        }\n```\n- **Selection** - The `Selection` is one of the primary means to build requests against the data model. Specifically, the `Selection` represents which fields to select and which related resources to embed.\n```elm\ntype Selection attributes a\n    = Selection\n        (attributes\n         ->\n            { attributeNames : List String\n            , embeds : List Parameters\n            , decoder : Decode.Decoder a\n            }\n        )\n```\n- **Schema** - The `Schema` is the means to describe the capabilities of a data model. *Capabilities* means what we can select, what we can filter by, and what we can order by. We\'re only going to cover selection in this post.\n```elm\ntype Schema id attributes\n    = Schema String attributes\n```\n- **Attribute** - An individual select-able unit of a `Schema`. For example, the article resource has a title `Attribute String`.\n```elm\ntype Attribute a\n    = Attribute\n        { name : String\n        , decoder : Decode.Decoder a\n        , encoder : a -> Encode.Value\n        , urlEncoder : a -> String\n        }\n```\n\n## Request\nHere we\'re constructing a `Request` which will result in a `List String`. The mental model for this type should be the same as that of an `Http.Request`: "If we were to send this `Request`, we can expect back a `List String`."\n\n\n```elm\ngetArticles : Request (List String)\ngetArticles =\n    PG.readAll articleSchema articleSelection\n```\nLet\'s take a look at the function signature of `PG.readAll` before moving on to the next section.\n\n```elm\nreadAll : Schema id attributes -> Selection attributes a -> Request (List a)\n```\n\nAs we can see by the signature of `readAll`, a `Request` can be constructed with a `Selection` and a `Schema`. Let\'s now take a look at our `Selection`.\n\n## Selection\n\nThe `Selection` type has 2 type parameters: `attributes` and `a`. The mental model for reading this type is "If given a `Schema` of `attributes`, a value of type `a` could be selected."\n\n```elm\narticleSelection :\n    Selection\n        { attributes\n            | title : Attribute String\n        }\n        String\narticleSelection =\n    PG.field .title\n```\n\nThings will look vaguely familiar if you\'ve worked with `Json.Decode.field`. This is intentional. Overall, you\'ll find that the `Selection` API is quite similar to the `Decoder` API. Let\'s examine the signature of `PG.field`:\n\n```elm\nPG.field : (attributes -> Attribute a) -> Selection attributes a\n```\n\nA field `Selection` is composed of a dot accessor for an `Attribute`. If we remember back to the mental model for a `Selection`, we\'ll recall that we\'re in need of a `Schema` to fulfill the `Selection`. Given that the first type parameter of our `articleSelection` is `{ attributes | title : Attribute String }`, our `Schema` will likely itself have this record of `Attribute`s. Let\'s take a look!\n\n## Schema\n\nIn theory, we could pass anything as the second parameter to the `PG.schema` function, but in practice this value will always be an Elm record of `Attribute`s.\n\n```elm\narticleSchema :\n    Schema x\n        { title : Attribute String\n        , body : Attribute String\n        , favoritesCount : Attribute Int\n        }\narticleSchema =\n    PG.schema "articles"\n        { title = PG.string "title"\n        , body = PG.string "body"\n        , favoritesCount = PG.int "favorites_count"\n        }\n```\n\n`PG.schema` takes a `String` which corresponds to the path to our resource (ex: example.com/api/*articles*) and a record of `Attribute`s. This record of `Attribute`s describes the capabilities of a data model. In our specific case, it describes what we are able to select!\n\nLet\'s take a look at how `Schema` and `PG.schema` are defined internally:\n\n```elm\ntype Schema id attributes\n    = Schema String attributes\n\nschema : String -> attributes -> Schema id attributes\nschema name attrs =\n    Schema name attrs\n```\n\nAt first glance, we\'ll see that a `Schema` is nothing more than a wrapper around a record of `Attribute`s. And this is true, but it\'s important to highlight that it\'s an **opaque** wrapper around a record of `Attribute`s. It may not be immediately obvious, but it is this API that guides users towards a separation of the description of capabilities (`Schema`) from the building of requests (`Selection`). A user can\'t just write something like `PG.field mySchema.title` because the record is wrapped, and a user can\'t just unwrap the `Schema` because it\'s opaque! They are forced to use the functions provided by the package to compose things (namely `PG.field`). This API guides users towards writing selections in terms of an eventual record of attributes!\n\n*Hopefully the previous explanation sheds a bit of light on why `PG.field` takes a dot accessor for an `Attribute` rather than an `Attribute` directly.*\n\nBefore moving on, let\'s review a few of these type signatures side by side:\n```elm\nPG.readAll : Schema id attributes -> Selection attributes a -> Request (List a)\n\n\narticleSelection :\n    Selection\n        { attributes\n            | title : Attribute String\n        }\n        String\n\n\narticleSchema :\n    Schema x\n        { title : Attribute String\n        , body : Attribute String\n        , favoritesCount : Attribute Int\n        }\n```\n\nJust take a moment to take this all in. It\'s pretty cool how the pieces fit together, and we can thank Elm\'s extensible record system for that!\n\n*Just to wrap things up for those who are curious, there exists a function of type `PG.toHttpRequest : PG.Request -> Http.Request`. From there you can convert to a `Task` with `Http.toTask` or directly to a `Cmd` with `Http.send`.*\n\n# Conclusion\n\n### Did we meet our design goals?\nYes! In our example, we built a request to read all the titles (Request Builder) of our article collection resource (Schema Representation) as opposed to making an HTTP GET request to the `api/articles?select=title` URL (Transfer Protocol) and decoding the JSON response (Interchange Format). The former is how we expressed our request in the example, and the latter is an implementation detail.\n\n### What has this design bought us?\n\n1. **Type Safety**\n2. **Reuse**\n\n#### Type Safety\nIf the `Schema` is valid, our `Request` will be valid. Our `Selection` is defined *in terms of* a `Schema`, and we can only construct a `Request` if the `Schema` and `Selection` agree statically. Put another way, a subset of request building errors become static errors rather than logic errors.\n\nFor example, let\'s say we mistype `.title` when we\'re constructing our `Selection`. If our `Schema` correctly describes our remote resource, we\'ll get a nice compiler message. Let\'s take a look at that error message!\n\n```\nThe definition of `articleSelection` does not match its type annotation.\n\n18| articleSelection :\n19|     Selection\n20|         { attributes\n21|             | title : Attribute String\n22|         }\n23|         String\n24| articleSelection =\n25|>    PG.field .titl\n\nThe type annotation for `articleSelection` says it is a:\n\n    Selection { attributes | title : ... } String\n\nBut the definition (shown above) is a:\n\n    Selection { b | titl : ... } a\n```\n\nPretty cool. However...\n\nClose readers will argue that we\'ve just moved the logic error to the `Schema` from the `Decoder`. This is true, however, the difference is that we only have 1 `Schema` for an entire entity as opposed to a `Decoder` for each way we wish to decode the entity. A `Schema` represents a single source of truth for all `Selection` capabilities of a remote resource. This in turn reduces the surface area of decoding logic errors.\n\nSo, in summary: If the `Schema` is valid, our `Request` will be valid.\n\n\n#### Reuse\n\nA `Selection` can be reused to construct `Request`s with *any* `Schema` that has the proper `Attribute`s! For example, if our remote data server had both article resources and book resources:\n\n```elm\narticleSchema :\n    Schema x\n        { title : Attribute String\n        , body : Attribute String\n        , favoritesCount : Attribute Int\n        }\narticleSchema =\n    PG.schema "articles"\n        { title = PG.string "title"\n        , body = PG.string "body"\n        , favoritesCount = PG.int "favorites_count"\n        }\n\n\nbookSchema :\n    Schema x\n        { title : Attribute String\n        , pages : Attribute Int\n        , authorName : Attribute String\n        }\nbookSchema =\n    PG.schema "books"\n        { title = PG.string "title"\n        , pages = PG.int "pages"\n        , authorName = PG.string "author_name"\n        }\n```\n\nWe could use the same `Selection`:\n\n```elm\ntitleSelection :\n    Selection\n        { attributes\n            | title : Attribute String\n        }\n        String\ntitleSelection =\n    PG.field .title\n```\n\nTo construct our 2 separate requests:\n\n```elm\ngetArticles : Request (List String)\ngetArticles =\n    PG.readAll articleSchema titleSelection\n\ngetBooks : Request (List String)\ngetBooks =\n    PG.readAll bookSchema titleSelection\n```\n\nPretty cool. However...\n\nTo be completely honest, I have not yet had a need for this reuse feature. With that being said, there\'s still something about it that makes the API feel right.\n\nSo, in summary: Extensible records in `Selection` API grant us reuse.\n\n\n### Which ideas could find their way into similar projects?\n- `Schema` as single source of truth for `Selection` capabilities\n- Separation of `Schema` and `Selection`\n- Extensible records central to design of this separation\n- `Selection` API similar to that of `Decoder` API\n- And more.. we\'ll discuss those in the future posts\n\n# Future\nIn the interest of space, time and boredom, I have not included all of the API designs of the `elm-postgrest` package in this post. In the future, I may write posts to highlight the concepts which were left out here. For example:\n- Combining Selections\n- Schema Relationships and Embedding Selections\n- Conditions and Orders\n- Create, Update, and Delete\n\n\nThanks for reading.\n\n\n*If you\'d like to view some more simple examples, here\'s a link to [the examples on github](https://github.com/john-kelly/elm-postgrest-example). Take a look at each individual git commit.*\n\n*If you\'d like to see a more "RealWorld" example application, here\'s a link to [john-kelly/elm-postgrest-spa-example](https://github.com/john-kelly/elm-postgrest-spa-example).*\n\n*If you\'re interested in taking a look at the development of `john-kelly/elm-postgrest`, head over to the [dev branch](https://github.com/john-kelly/elm-postgrest/tree/dev).*\n';
+var elm_lang$core$Basics$False = {$: 'False'};
+var elm_lang$core$Basics$True = {$: 'True'};
 var elm_lang$core$Maybe$isJust = function (maybe) {
-	if (!maybe.$) {
+	if (maybe.$ === 'Just') {
 		return true;
 	} else {
 		return false;
@@ -4221,7 +4221,7 @@ var elm_lang$core$Basics$identity = function (x) {
 	return x;
 };
 var elm_lang$core$Result$isOk = function (result) {
-	if (!result.$) {
+	if (result.$ === 'Ok') {
 		return true;
 	} else {
 		return false;
@@ -4230,16 +4230,16 @@ var elm_lang$core$Result$isOk = function (result) {
 var elm_lang$core$Array$branchFactor = 32;
 var elm_lang$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
-		return {$: 0, a: a, b: b, c: c, d: d};
+		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
 	});
-var elm_lang$core$Basics$EQ = 1;
-var elm_lang$core$Basics$GT = 2;
-var elm_lang$core$Basics$LT = 0;
+var elm_lang$core$Basics$EQ = {$: 'EQ'};
+var elm_lang$core$Basics$GT = {$: 'GT'};
+var elm_lang$core$Basics$LT = {$: 'LT'};
 var elm_lang$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
 		while (true) {
-			if (t.$ === -2) {
+			if (t.$ === 'RBEmpty_elm_builtin') {
 				return acc;
 			} else {
 				var key = t.b;
@@ -4285,7 +4285,7 @@ var elm_lang$core$Dict$keys = function (dict) {
 		dict);
 };
 var elm_lang$core$Set$toList = function (_n0) {
-	var dict = _n0;
+	var dict = _n0.a;
 	return elm_lang$core$Dict$keys(dict);
 };
 var elm_lang$core$Elm$JsArray$foldr = _JsArray_foldr;
@@ -4295,7 +4295,7 @@ var elm_lang$core$Array$foldr = F3(
 		var tail = _n0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (!node.$) {
+				if (node.$ === 'SubTree') {
 					var subTree = node.a;
 					return A3(elm_lang$core$Elm$JsArray$foldr, helper, acc, subTree);
 				} else {
@@ -4324,10 +4324,10 @@ var elm_lang$core$Array$shiftStep = elm_lang$core$Basics$ceiling(
 var elm_lang$core$Elm$JsArray$empty = _JsArray_empty;
 var elm_lang$core$Array$empty = A4(elm_lang$core$Array$Array_elm_builtin, 0, elm_lang$core$Array$shiftStep, elm_lang$core$Elm$JsArray$empty, elm_lang$core$Elm$JsArray$empty);
 var elm_lang$core$Array$Leaf = function (a) {
-	return {$: 1, a: a};
+	return {$: 'Leaf', a: a};
 };
 var elm_lang$core$Array$SubTree = function (a) {
-	return {$: 0, a: a};
+	return {$: 'SubTree', a: a};
 };
 var elm_lang$core$Elm$JsArray$initializeFromList = _JsArray_initializeFromList;
 var elm_lang$core$List$foldl = F3(
@@ -4408,25 +4408,25 @@ var elm_lang$core$Basics$sub = _Basics_sub;
 var elm_lang$core$Elm$JsArray$length = _JsArray_length;
 var elm_lang$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.a) {
+		if (!builder.nodeListSize) {
 			return A4(
 				elm_lang$core$Array$Array_elm_builtin,
-				elm_lang$core$Elm$JsArray$length(builder.c),
+				elm_lang$core$Elm$JsArray$length(builder.tail),
 				elm_lang$core$Array$shiftStep,
 				elm_lang$core$Elm$JsArray$empty,
-				builder.c);
+				builder.tail);
 		} else {
-			var treeLen = builder.a * elm_lang$core$Array$branchFactor;
+			var treeLen = builder.nodeListSize * elm_lang$core$Array$branchFactor;
 			var depth = elm_lang$core$Basics$floor(
 				A2(elm_lang$core$Basics$logBase, elm_lang$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? elm_lang$core$List$reverse(builder.d) : builder.d;
-			var tree = A2(elm_lang$core$Array$treeFromBuilder, correctNodeList, builder.a);
+			var correctNodeList = reverseNodeList ? elm_lang$core$List$reverse(builder.nodeList) : builder.nodeList;
+			var tree = A2(elm_lang$core$Array$treeFromBuilder, correctNodeList, builder.nodeListSize);
 			return A4(
 				elm_lang$core$Array$Array_elm_builtin,
-				elm_lang$core$Elm$JsArray$length(builder.c) + treeLen,
+				elm_lang$core$Elm$JsArray$length(builder.tail) + treeLen,
 				A2(elm_lang$core$Basics$max, 5, depth * elm_lang$core$Array$shiftStep),
 				tree,
-				builder.c);
+				builder.tail);
 		}
 	});
 var elm_lang$core$Basics$idiv = _Basics_idiv;
@@ -4440,7 +4440,7 @@ var elm_lang$core$Array$initializeHelp = F5(
 				return A2(
 					elm_lang$core$Array$builderToArray,
 					false,
-					{d: nodeList, a: (len / elm_lang$core$Array$branchFactor) | 0, c: tail});
+					{nodeList: nodeList, nodeListSize: (len / elm_lang$core$Array$branchFactor) | 0, tail: tail});
 			} else {
 				var leaf = elm_lang$core$Array$Leaf(
 					A3(elm_lang$core$Elm$JsArray$initialize, elm_lang$core$Array$branchFactor, fromIndex, fn));
@@ -4472,35 +4472,35 @@ var elm_lang$core$Array$initialize = F2(
 		}
 	});
 var elm_lang$core$Maybe$Just = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Just', a: a};
 };
-var elm_lang$core$Maybe$Nothing = {$: 1};
+var elm_lang$core$Maybe$Nothing = {$: 'Nothing'};
 var elm_lang$core$Result$Err = function (a) {
-	return {$: 1, a: a};
+	return {$: 'Err', a: a};
 };
 var elm_lang$core$Result$Ok = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Ok', a: a};
 };
 var elm_lang$json$Json$Decode$Failure = F2(
 	function (a, b) {
-		return {$: 3, a: a, b: b};
+		return {$: 'Failure', a: a, b: b};
 	});
 var elm_lang$json$Json$Decode$Field = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'Field', a: a, b: b};
 	});
 var elm_lang$json$Json$Decode$Index = F2(
 	function (a, b) {
-		return {$: 1, a: a, b: b};
+		return {$: 'Index', a: a, b: b};
 	});
 var elm_lang$json$Json$Decode$OneOf = function (a) {
-	return {$: 2, a: a};
+	return {$: 'OneOf', a: a};
 };
 var elm_lang$json$Json$Decode$map = _Json_map1;
 var elm_lang$json$Json$Decode$map2 = _Json_map2;
 var elm_lang$json$Json$Decode$succeed = _Json_succeed;
 var elm_lang$virtual_dom$VirtualDom$isSync = function (timed) {
-	if (!timed.$) {
+	if (timed.$ === 'Sync') {
 		return true;
 	} else {
 		return false;
@@ -4508,11 +4508,11 @@ var elm_lang$virtual_dom$VirtualDom$isSync = function (timed) {
 };
 var elm_lang$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	switch (handler.$) {
-		case 0:
+		case 'Normal':
 			return 0;
-		case 1:
+		case 'MayStopPropagation':
 			return 1;
-		case 2:
+		case 'MayPreventDefault':
 			return 2;
 		default:
 			return 3;
@@ -4521,9 +4521,11 @@ var elm_lang$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 var elm_explorations$markdown$Markdown$toHtmlWith = _Markdown_toHtml;
 var elm_lang$browser$Browser$Env = F2(
 	function (flags, url) {
-		return {L: flags, X: url};
+		return {flags: flags, url: url};
 	});
-var elm_lang$browser$Browser$NotFound = elm_lang$core$Basics$identity;
+var elm_lang$browser$Browser$NotFound = function (a) {
+	return {$: 'NotFound', a: a};
+};
 var elm_lang$core$String$length = _String_length;
 var elm_lang$core$String$slice = _String_slice;
 var elm_lang$core$String$dropLeft = F2(
@@ -4535,8 +4537,8 @@ var elm_lang$core$String$dropLeft = F2(
 			string);
 	});
 var elm_lang$core$String$startsWith = _String_startsWith;
-var elm_lang$url$Url$Parser$Http = 0;
-var elm_lang$url$Url$Parser$Https = 1;
+var elm_lang$url$Url$Parser$Http = {$: 'Http'};
+var elm_lang$url$Url$Parser$Https = {$: 'Https'};
 var elm_lang$core$String$indexes = _String_indexes;
 var elm_lang$core$String$isEmpty = function (string) {
 	return string === '';
@@ -4550,7 +4552,7 @@ var elm_lang$core$String$contains = _String_contains;
 var elm_lang$core$String$toInt = _String_toInt;
 var elm_lang$url$Url$Parser$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {C: fragment, M: host, E: path, Q: port_, T: protocol, F: query};
+		return {fragment: fragment, host: host, path: path, port_: port_, protocol: protocol, query: query};
 	});
 var elm_lang$url$Url$Parser$chompBeforePath = F5(
 	function (protocol, path, params, frag, str) {
@@ -4566,7 +4568,7 @@ var elm_lang$url$Url$Parser$chompBeforePath = F5(
 					var i = _n0.a;
 					var _n1 = elm_lang$core$String$toInt(
 						A2(elm_lang$core$String$dropLeft, i + 1, str));
-					if (_n1.$ === 1) {
+					if (_n1.$ === 'Nothing') {
 						return elm_lang$core$Maybe$Nothing;
 					} else {
 						var port_ = _n1;
@@ -4648,25 +4650,27 @@ var elm_lang$url$Url$Parser$chompAfterProtocol = F2(
 var elm_lang$url$Url$Parser$toUrl = function (str) {
 	return A2(elm_lang$core$String$startsWith, 'http://', str) ? A2(
 		elm_lang$url$Url$Parser$chompAfterProtocol,
-		0,
+		elm_lang$url$Url$Parser$Http,
 		A2(elm_lang$core$String$dropLeft, 7, str)) : (A2(elm_lang$core$String$startsWith, 'https://', str) ? A2(
 		elm_lang$url$Url$Parser$chompAfterProtocol,
-		1,
+		elm_lang$url$Url$Parser$Https,
 		A2(elm_lang$core$String$dropLeft, 8, str)) : elm_lang$core$Maybe$Nothing);
 };
 var elm_lang$browser$Browser$unsafeToUrl = function (string) {
 	var _n0 = elm_lang$url$Url$Parser$toUrl(string);
-	if (_n0.$ === 1) {
+	if (_n0.$ === 'Nothing') {
 		return _Browser_invalidUrl(string);
 	} else {
 		var url = _n0.a;
 		return url;
 	}
 };
-var elm_lang$browser$Browser$Navigation$Manager$Listen = elm_lang$core$Basics$identity;
+var elm_lang$browser$Browser$Navigation$Manager$Listen = function (a) {
+	return {$: 'Listen', a: a};
+};
 var elm_lang$browser$Browser$Navigation$Manager$State = F2(
 	function (subs, popWatcher) {
-		return {P: popWatcher, W: subs};
+		return {popWatcher: popWatcher, subs: subs};
 	});
 var elm_lang$core$Task$succeed = _Scheduler_succeed;
 var elm_lang$browser$Browser$Navigation$Manager$init = elm_lang$core$Task$succeed(
@@ -4777,7 +4781,7 @@ var elm_lang$core$Task$sequence = function (tasks) {
 var elm_lang$browser$Browser$Navigation$Manager$notify = F3(
 	function (router, subs, url) {
 		var send = function (_n0) {
-			var tagger = _n0;
+			var tagger = _n0.a;
 			return A2(
 				elm_lang$core$Platform$sendToApp,
 				router,
@@ -4787,17 +4791,17 @@ var elm_lang$browser$Browser$Navigation$Manager$notify = F3(
 			elm_lang$browser$Browser$Navigation$Manager$ignore,
 			elm_lang$core$Task$sequence(
 				A2(elm_lang$core$List$map, send, subs)),
-			0);
+			_Utils_Tuple0);
 	});
 var elm_lang$browser$Browser$Navigation$Manager$pushState = _Browser_pushState;
 var elm_lang$browser$Browser$Navigation$Manager$replaceState = _Browser_replaceState;
 var elm_lang$browser$Browser$Navigation$Manager$cmdHelp = F3(
 	function (router, subs, cmd) {
 		switch (cmd.$) {
-			case 0:
+			case 'Go':
 				var n = cmd.a;
 				return elm_lang$browser$Browser$Navigation$Manager$go(n);
-			case 1:
+			case 'Push':
 				var url = cmd.a;
 				return A2(
 					elm_lang$core$Task$andThen,
@@ -4813,7 +4817,7 @@ var elm_lang$browser$Browser$Navigation$Manager$cmdHelp = F3(
 	});
 var elm_lang$core$Process$kill = _Scheduler_kill;
 var elm_lang$browser$Browser$Navigation$Manager$killPopWatcher = function (popWatcher) {
-	if (!popWatcher.$) {
+	if (popWatcher.$ === 'Normal') {
 		var pid = popWatcher.a;
 		return elm_lang$core$Process$kill(pid);
 	} else {
@@ -4829,10 +4833,10 @@ var elm_lang$browser$Browser$Navigation$Manager$killPopWatcher = function (popWa
 };
 var elm_lang$browser$Browser$Navigation$Manager$InternetExplorer = F2(
 	function (a, b) {
-		return {$: 1, a: a, b: b};
+		return {$: 'InternetExplorer', a: a, b: b};
 	});
 var elm_lang$browser$Browser$Navigation$Manager$Normal = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Normal', a: a};
 };
 var elm_lang$core$Platform$sendToSelf = _Platform_sendToSelf;
 var elm_lang$browser$Browser$Navigation$Manager$reportUrl = F2(
@@ -4846,7 +4850,7 @@ var elm_lang$browser$Browser$Navigation$Manager$reportUrl = F2(
 				return A2(
 					elm_lang$core$Platform$sendToSelf,
 					router,
-					_Browser_getUrl(0));
+					_Browser_getUrl(_Utils_Tuple0));
 			});
 	});
 var elm_lang$core$Task$map = F2(
@@ -4860,7 +4864,7 @@ var elm_lang$core$Task$map = F2(
 			taskA);
 	});
 var elm_lang$browser$Browser$Navigation$Manager$spawnPopWatcher = function (router) {
-	return _Browser_isInternetExplorer11(0) ? A3(
+	return _Browser_isInternetExplorer11(_Utils_Tuple0) ? A3(
 		elm_lang$core$Task$map2,
 		elm_lang$browser$Browser$Navigation$Manager$InternetExplorer,
 		A2(elm_lang$browser$Browser$Navigation$Manager$reportUrl, 'popstate', router),
@@ -4876,13 +4880,13 @@ var elm_lang$core$Basics$composeL = F3(
 	});
 var elm_lang$browser$Browser$Navigation$Manager$onEffects = F4(
 	function (router, cmds, subs, _n0) {
-		var popWatcher = _n0.P;
+		var popWatcher = _n0.popWatcher;
 		var stepState = function () {
 			var _n2 = _Utils_Tuple2(subs, popWatcher);
 			_n2$2:
 			while (true) {
 				if (!_n2.a.b) {
-					if (!_n2.b.$) {
+					if (_n2.b.$ === 'Just') {
 						var watcher = _n2.b.a;
 						return A2(
 							elm_lang$browser$Browser$Navigation$Manager$ignore,
@@ -4892,7 +4896,7 @@ var elm_lang$browser$Browser$Navigation$Manager$onEffects = F4(
 						break _n2$2;
 					}
 				} else {
-					if (_n2.b.$ === 1) {
+					if (_n2.b.$ === 'Nothing') {
 						var _n3 = _n2.a;
 						var _n4 = _n2.b;
 						return A2(
@@ -4927,25 +4931,25 @@ var elm_lang$browser$Browser$Navigation$Manager$onSelfMsg = F3(
 	function (router, url, state) {
 		return A2(
 			elm_lang$browser$Browser$Navigation$Manager$ignore,
-			A3(elm_lang$browser$Browser$Navigation$Manager$notify, router, state.W, url),
+			A3(elm_lang$browser$Browser$Navigation$Manager$notify, router, state.subs, url),
 			state);
 	});
 var elm_lang$browser$Browser$Navigation$Manager$Go = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Go', a: a};
 };
 var elm_lang$browser$Browser$Navigation$Manager$Push = function (a) {
-	return {$: 1, a: a};
+	return {$: 'Push', a: a};
 };
 var elm_lang$browser$Browser$Navigation$Manager$Replace = function (a) {
-	return {$: 2, a: a};
+	return {$: 'Replace', a: a};
 };
 var elm_lang$browser$Browser$Navigation$Manager$cmdMap = F2(
 	function (_n0, myCmd) {
 		switch (myCmd.$) {
-			case 0:
+			case 'Go':
 				var n = myCmd.a;
 				return elm_lang$browser$Browser$Navigation$Manager$Go(n);
-			case 1:
+			case 'Push':
 				var url = myCmd.a;
 				return elm_lang$browser$Browser$Navigation$Manager$Push(url);
 			default:
@@ -4960,11 +4964,12 @@ var elm_lang$core$Basics$composeR = F3(
 	});
 var elm_lang$browser$Browser$Navigation$Manager$subMap = F2(
 	function (func, _n0) {
-		var tagger = _n0;
-		return function ($) {
-			return func(
-				tagger($));
-		};
+		var tagger = _n0.a;
+		return elm_lang$browser$Browser$Navigation$Manager$Listen(
+			function ($) {
+				return func(
+					tagger($));
+			});
 	});
 _Platform_effectManagers['Browser.Navigation.Manager'] = _Platform_createManager(elm_lang$browser$Browser$Navigation$Manager$init, elm_lang$browser$Browser$Navigation$Manager$onEffects, elm_lang$browser$Browser$Navigation$Manager$onSelfMsg, elm_lang$browser$Browser$Navigation$Manager$cmdMap, elm_lang$browser$Browser$Navigation$Manager$subMap);
 var elm_lang$browser$Browser$Navigation$Manager$command = _Platform_leaf('Browser.Navigation.Manager');
@@ -4975,26 +4980,27 @@ var elm_lang$browser$Browser$Navigation$Manager$addListen = F3(
 		return elm_lang$core$Platform$Sub$batch(
 			_List_fromArray(
 				[
-					elm_lang$browser$Browser$Navigation$Manager$subscription(toMsg),
+					elm_lang$browser$Browser$Navigation$Manager$subscription(
+					elm_lang$browser$Browser$Navigation$Manager$Listen(toMsg)),
 					toSubs(model)
 				]));
 	});
 var elm_lang$browser$Browser$fullscreen = function (impl) {
 	return _Browser_fullscreen(
 		{
-			ae: function (_n0) {
-				var flags = _n0.L;
-				var url = _n0.X;
-				return impl.ae(
+			init: function (_n0) {
+				var flags = _n0.flags;
+				var url = _n0.url;
+				return impl.init(
 					A2(
 						elm_lang$browser$Browser$Env,
 						flags,
 						elm_lang$browser$Browser$unsafeToUrl(url)));
 			},
-			al: function () {
-				var _n1 = impl.ag;
-				if (_n1.$ === 1) {
-					return impl.al;
+			subscriptions: function () {
+				var _n1 = impl.onNavigation;
+				if (_n1.$ === 'Nothing') {
+					return impl.subscriptions;
 				} else {
 					var toMsg = _n1.a;
 					return A2(
@@ -5003,11 +5009,11 @@ var elm_lang$browser$Browser$fullscreen = function (impl) {
 							return toMsg(
 								elm_lang$browser$Browser$unsafeToUrl($));
 						},
-						impl.al);
+						impl.subscriptions);
 				}
 			}(),
-			ao: impl.ao,
-			ap: impl.ap
+			update: impl.update,
+			view: impl.view
 		});
 };
 var elm_lang$core$Platform$Cmd$batch = _Platform_batch;
@@ -5015,36 +5021,36 @@ var elm_lang$core$Platform$Cmd$none = elm_lang$core$Platform$Cmd$batch(_List_Nil
 var elm_lang$core$Platform$Sub$none = elm_lang$core$Platform$Sub$batch(_List_Nil);
 var author$project$Main$main = elm_lang$browser$Browser$fullscreen(
 	{
-		ae: function (env) {
-			return _Utils_Tuple2(0, elm_lang$core$Platform$Cmd$none);
+		init: function (env) {
+			return _Utils_Tuple2(_Utils_Tuple0, elm_lang$core$Platform$Cmd$none);
 		},
-		ag: elm_lang$core$Maybe$Nothing,
-		al: function (model) {
+		onNavigation: elm_lang$core$Maybe$Nothing,
+		subscriptions: function (model) {
 			return elm_lang$core$Platform$Sub$none;
 		},
-		ao: F2(
+		update: F2(
 			function (msg, model) {
 				return _Utils_Tuple2(model, elm_lang$core$Platform$Cmd$none);
 			}),
-		ap: function (model) {
+		view: function (model) {
 			return {
-				Z: _List_fromArray(
+				body: _List_fromArray(
 					[
 						A3(
 						elm_explorations$markdown$Markdown$toHtmlWith,
 						{
-							aa: elm_lang$core$Maybe$Just('elm'),
-							ac: elm_lang$core$Maybe$Just(
-								{_: false, am: true}),
-							aj: false,
-							ak: true
+							defaultHighlighting: elm_lang$core$Maybe$Just('elm'),
+							githubFlavored: elm_lang$core$Maybe$Just(
+								{breaks: false, tables: true}),
+							sanitize: false,
+							smartypants: true
 						},
 						_List_Nil,
 						author$project$Main$blog0)
 					]),
-				an: 'foldp'
+				title: 'foldp'
 			};
 		}
 	});
 _Platform_export({'Main':author$project$Main$main(
-	elm_lang$json$Json$Decode$succeed(0))(0)({})});}(this));
+	elm_lang$json$Json$Decode$succeed(_Utils_Tuple0))(0)({})});}(this));

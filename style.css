@@ -1,27 +1,25 @@
-/*
-  1. Use a more-intuitive box-sizing model.
-*/
+/*1. Use a more-intuitive box-sizing model.*/
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/*
-  2. Remove default margin
-*/
+
+/*2. Remove default margin*/
 * {
   margin: 0;
 }
 
-/*
-  3. Allow percentage-based heights in the application
-*/
+/*3. Allow percentage-based heights in the application*/
 html, body {
   height: 100%;
 }
 
+
+
 .gist {
   padding: 25%;
   padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .gist .gist-file {
@@ -30,7 +28,8 @@ html, body {
 
 @media screen and (max-width: 700px) {
   .gist {
-    padding: 0;
+    padding: 5px;
     padding-top: 10px;
+    padding-bottom: 10px;
   }
 }

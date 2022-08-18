@@ -607,7 +607,3 @@ progress:indeterminate::-moz-progress-bar {
 .gist .gist-file {
   border: 0 !important;
 }
-
-pre {
-  font-size: 1.15rem !important;
-}

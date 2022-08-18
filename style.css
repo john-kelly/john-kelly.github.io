@@ -608,3 +608,7 @@ progress:indeterminate::-moz-progress-bar {
 .gist .gist-file {
   border: 0 !important;
 }
+
+.gist .gist-file article {
+  padding: 0 !important;
+}

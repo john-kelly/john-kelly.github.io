@@ -610,5 +610,6 @@ progress:indeterminate::-moz-progress-bar {
 }
 
 .gist .gist-file article {
+  /*NOTE: this fixed issue with weird horizontal scroll on iphone 11 pro. */
   padding: 0 !important;
 }

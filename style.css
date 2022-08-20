@@ -547,7 +547,6 @@ pre span,
 kbd,
 samp {
   font-family: var(--mono-font);
-  color: var(--code);
 }
 
 kbd {

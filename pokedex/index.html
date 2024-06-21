@@ -126,8 +126,8 @@
         }
 
         @media only screen and (max-width: 720px) {
-            body {overflow: hidden}
-            html {overflow: hidden}
+            body:has(div.wrapper) {overflow: hidden}
+            html:has(div.wrapper) {overflow: hidden}
           
             .wrapper {
                 display: flex;
